@@ -35,10 +35,10 @@
 ;	OR        |
 ;	XOR       ^
 ;	INV       ~
-;	DUP       “
+;	DUP       â€œ
 ;	DROP      `
 ;	PUSH      ,
-;	POP       ‘
+;	POP       â€˜
 ;	SWAP      $
 ;	OVER      %
 ;	FETCH     @
@@ -58,7 +58,7 @@
 ;	KEY       ?
 ;	PRINT     _
 ;	NOP       Space
-;   LIT       #
+; LIT       #
 
 
 ;	Lower case letters are used for more complex commands
@@ -99,8 +99,8 @@
 
 ;		You can play sequences of notes through a small speaker  ABC etc
 
-;		:A40{h1106ul1106u);		     musical note A
-;		:B5{h986ul986u);			 musical note B
+;		    :A40{h1106ul1106u);		 musical note A
+;		    :B5{h986ul986u);			 musical note B
 ;       :C51{h929ul929u);			 musical note C
 ;       :D57{h825ul825u);			 musical note D
 ;       :E64{h733ul733u);			 musical note E
