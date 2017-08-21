@@ -57,7 +57,7 @@
 ;	OUT       ]
 ;	KEY       ?
 ;	PRINT     _
-;	NOP       Space
+; NOP       Space
 ; LIT       #
 
 
@@ -99,14 +99,14 @@
 
 ;		You can play sequences of notes through a small speaker  ABC etc
 
-;		    :A40{h1106ul1106u);		 musical note A
-;		    :B5{h986ul986u);			 musical note B
-;       :C51{h929ul929u);			 musical note C
-;       :D57{h825ul825u);			 musical note D
-;       :E64{h733ul733u);			 musical note E
-;       :F72{h690ul691u);			 musical note F
-;       :G81{h613ul613u);			 musical note G
-;       :H_Hello World, and welcome to SIMPL_;   A Banner Message
+;   :A40{h1106ul1106u);		 musical note A
+;   :B5{h986ul986u);			 musical note B
+;   :C51{h929ul929u);			 musical note C
+;   :D57{h825ul825u);			 musical note D
+;   :E64{h733ul733u);			 musical note E
+;   :F72{h690ul691u);			 musical note F
+;   :G81{h613ul613u);			 musical note G
+;   :H_Hello World, and welcome to SIMPL_;   A Banner Message
 
 ;   Examples of SIMPL phrases
 
