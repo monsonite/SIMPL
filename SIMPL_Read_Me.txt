@@ -57,8 +57,8 @@
 ;	OUT       ]
 ;	KEY       ?
 ;	PRINT     _
-; NOP       Space
-; LIT       #
+;       NOP       Space
+;       LIT       #
 
 
 ;	Lower case letters are used for more complex commands
