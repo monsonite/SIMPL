@@ -99,7 +99,7 @@
 
 ;		You can play sequences of notes through a small speaker  ABC etc
 
-;   :A40{h1106ul1106u);		 musical note A
+;   :A40{h1106ul1106u);		        musical note A
 ;   :B5{h986ul986u);			 musical note B
 ;   :C51{h929ul929u);			 musical note C
 ;   :D57{h825ul825u);			 musical note D
