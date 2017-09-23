@@ -11,7 +11,42 @@ Most recently - runs under Arduino on STM32L433 on the myStorm BlackIce open sou
 
 Previously coded in under 1024 bytes of MSP430 assembly language - Runs on MSP430G2553 Launchpad
 
-Here are some quick instructions
+Here are some quick instructions - it uses lower case commands usually preceded by an integer number 32767 max
+
+1234p   Print the number 1234
+14sp    Take an ADC sample from pin 14 and print it as an integer
+_Hello World_   Print the text string contained between the underscores
+47d     Define the GPIO pin to be used for input or output
+1o      Output logic 1 to the previously defined output pin
+0o      Output logic 0 to the previously defined output pin
+1000m   A delay of 1000 milliseconds
+100u    A delay of 100 microseconds
+b       Print the current value of the millisecond counter
+c       Print the current valule of the microsecond counter
+{ }     Create a loop structure
+k       The current value of the loop counter - decrements each time around the loop
+
+Make a LED on pin 47 flash 10 times
+
+47d10{1o100m0o100m}
+
+Create a short audio tone on pin 47
+
+1000{1o250u0o250u}
+
+Take 100 ADC samples on pin 14 (AN0) and print them out
+
+100{14sp}
+
+Add 10 and 11 and print the result
+
+10 11+p
+
+
+
+
+
+
 
 ; Serial Interpreted Microcontroller Programming Language
 ;-------------------------------------------------------------------------------
