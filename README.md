@@ -1,15 +1,23 @@
 # SIMPL
-A serial interpreted minimal programming language toolkit - adapted for various microcontrollers.
 
-SIMPL is about 300 lines of C code that allow you to control the peripherals of a microcontroller from a serial terminal connection.
+A serial interpreted minimal programming language toolkit - adapted for various microcontrollers including Arduino, ARM and MSP430.
 
-It's usually the first thing I try to get working when bringing up any new microcontroller board.
+The SIMPLinterpreter is about 300 lines of C code that allow you to control the peripherals of a microcontroller from a serial terminal connection.
 
-It uses single ascii characters as commands to control the hardware - and commands can be strung together to make new commands - a litte bit like FORTH.
+It enables interaction with the hardware and peripherals using a set of serial commands - for example typing 13h will set digital pin 13 high and typing 13l will set it low. 
 
-Most recently - runs under Arduino on STM32L433 on the myStorm BlackIce open source FPGA board  - September 2017
+There are commands to access the ADC channels, perform integer arithmetic and print numerical results and strings to the terminal.
+
+SIMPL uses single ascii characters as commands to control the hardware - and commands can be strung together to make new commands - a litte bit like FORTH.
+
+There are 96 printable ascii characters, so this limits SIMPL to 96 unique commands.
+
+
+Most recently - SIMPL runs under Arduino on STM32L433 on the myStorm BlackIce open source FPGA board  - September 2017
 
 Previously coded in under 1024 bytes of MSP430 assembly language - Runs on MSP430G2553 Launchpad
+
+
 
 ; Serial Interpreted Microcontroller Programming Language
 
@@ -17,7 +25,7 @@ Previously coded in under 1024 bytes of MSP430 assembly language - Runs on MSP43
 
 ; SIMPL - a very small Forth Inspired Extensible Language 
 
-; Ever evolving - some or all of this might not work on the version you try
+
 
 ; Type ? to get list of commands
 
@@ -171,44 +179,5 @@ Make a LED on pin 47 flash 10 times
 ; Maths operators +  - * and / are recognised
 
 
-;		Upper case letters A to Z are used to define Users "words"
 
-;		User Routines are defined by capital letters starting  with colon : and end with semicolon ;
-
-;		eg  :F10(100mh200ml);		;	Flash the led 10 times - high for 100mS and low for 200mS
-
-;		You can play sequences of notes through a small speaker  ABC etc
-
-;   :A40{h1106ul1106u);		 musical note A
-
-;   :B5{h986ul986u);			 musical note B
-
-;   :C51{h929ul929u);			 musical note C
-
-;   :D57{h825ul825u);			 musical note D
-
-;   :E64{h733ul733u);			 musical note E
-
-;   :F72{h690ul691u);			 musical note F
-
-;   :G81{h613ul613u);			 musical note G
-
-;   :H_Hello World, and welcome to SIMPL_;   A Banner Message
-
-
-;   Examples of SIMPL phrases
-
-; 	eg add 123 and 456 and print the result to the terminal
-
-; 	123 456+p
-
-;	  Loop 10 times printing "Spurs are Fab!"
-
-; 	10(_Spurs are Fab!_)
-
-;   Flash a LED 10 times 100mS on 200mS off
-
-;   10(h100ml200m)
-
-;   Toggle a port pin at 1MHz   1000(hlhlhlhlhlhlhlhlhlhl)
 
