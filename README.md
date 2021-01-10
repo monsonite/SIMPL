@@ -2,30 +2,46 @@
 
 # Introduction.
 
-A serial, interpreted, minimal programming language toolkit - adapted for various microcontrollers including Arduino, ARM and MSP430.
+A serial, interpreted, minimal programming language - adapted for various microcontrollers including Arduino, ARM, MSP430 and experimental FPGA/simulated soft core processors.
 
-SIMPL is intended to be a minimal, human readable scripting language based on the printable ascii character set.
+SIMPL is intended to be a minimal, human readable scripting language based on the printable ascii character set. It can be applied to almost any cpu architecture.
 
-It has been evolving since May 2013 but started with the need to provide an interactive control method for microcontrollers from a serial terminal - driven by the underlying requirements of keeping the onchip resources to an absolute minimum and the interpreter as simple as possible. 
+It started in 2009 when I required an interactive control method for microcontrollers from a serial terminal.
 
-It has it's roots in the first electronic computers of the late 1940s where the instruction set was based on alphabetic uppercase characters read from a teletype paper tape. Each character was chosen to have a strong mnemonic value so that it was easily remembered, and made code listings easier to read and write - with fewer mistakes. 
+As a hardware engineer and not a strong programmer it was driven by the underlying requirements of keeping the onchip resources to an absolute minimum and the interpreter code as simple as possible.
+
+It began with a serial command interpreter for exercising Arduino hardware but has evolved into an interactive language toolkit for exercising a virtual machine VM.
+
+Historical documentation can be found in my blog "Sustainable Suburbia" starting in May 2013: 
+
+http://sustburbia.blogspot.com/2013/05/txtzyme-minimal-interpreter-and.html
+
+At all times I apply the KISS principle - Keep it SIMPL, stupid.
+
+
+
+# History
+
+SIMPL was inspired by Ward Cunningham's Txtzyme nano-interpreter  https://github.com/WardCunningham/Txtzyme which I first encountered in May of 2013. I combined Ward's elegant and compact nano-interpreter with my uppercase serial command interpreter.  
+
+SIMPL builds upon Ward's philosopy of keeping things simple, but adds significantly more functionality and provides the means to make a user extensible language.
+
+SIMPL was also heavily influenced by Charles H. Moore's Forth. It uses the same reverse polish notation RPN,  placing the operands on the stack before executing the operator function.
+
+SIMPL has it's roots in the first electronic computers of the late 1940s where the instruction set was based on uppercase alphabetic characters read from a teletype paper tape into memory. Teletype character sets were limited to uppercase alpha characters, numerals and a few punctuation symbols.
+
+Each character was chosen to have a strong mnemonic value so that it was easily remembered, and made code listings easier to read and write - with fewer mistakes. 
 
 See the Cambridge EDSAC from 1948 for examples of an alpha character instruction set:  https://www.cl.cam.ac.uk/~mr10/Edsac/edsacposter.pdf
 
 
-SIMPL was developed as a human readable pseudo-language to control a 16-bit virtual machine based on a Minimal Instruction Set Computer (MISC).
+SIMPL has evolved as a human readable pseudo-language to control a 16-bit virtual machine based on a Minimal Instruction Set Computer (MISC). If the interpreter is written in C it is easily extended to accommodate 32-bit words.
 
-It performs the Read-Eval-Print Loop (REPL) required by a serial interpreter shell.  
+SIMPL performs the Read-Eval-Print Loop (REPL) required by a serial interpreter shell.  
 
 A MISC is a computer architecture typically defined by a very small instruction set - often with only 8 to 32 instructions. 
 
 One example is the PDP-8, a 12-bit machine from 1965 which had 8 primitive instructions plus the means to control operations on it's accumulator by directly decoding the bitfield from the instruction word. Despite the lack of instructions, the PDP-8 was a versatile machine with it's hardware deficiencies being made up for in software macros.
-
-SIMPL was inspired by Ward Cunningham's Txtzyme nano-interpreter  https://github.com/WardCunningham/Txtzyme
-
-It builds upon Ward's philosopy of keeping things simple, but adds significantly more functionality and the means to make a user extensible language.
-
-SIMPL was also influenced by Charles H. Moore's Forth. It uses the same reverse polish notation RPN placing the operands on the stack before executing the operator function.
 
 Additionally, new User functions can be built up by concatenating exisisting functions - this makes SIMPL extensible.
 
@@ -38,7 +54,7 @@ SIMPL is effectively a human readable language for implementing a 16-bit Von Neu
 It can be applied to any resource limited processor, it is easier to read and write than assembler but not as complex as a full Forth implementation. 
 
 
-__Functionality.
+# Functionality.
 
 
 SIMPL sets up a minimal serial shell which allows you to control a microcontroller from a few ascii characters typed from a serial terminal.
@@ -124,7 +140,7 @@ A SIMPL interpreter shell can be written in about 300 bytes of assembly language
 The shell can also be written in C, or using the Arduino C++ language - but the ROM size will be significantly larger. Many of the Arduino reference language functions use a significant amount of ROM.
 
 
-__Implementation.
+# Implementation.
 
 
 SIMPL can be created from half a dozen basic function routines. These implement the Read-Eval-Print Loop REPL
