@@ -7,8 +7,11 @@ A serial interpreted minimal programming language toolkit - adapted for various 
 SIMPL sets up a minimal serial shell which allows you to control a microcontroller from a few ascii characters typed from a serial terminal.
 
 Numbers 0-9  are processed as a 16-bit integer and used as a control parameter
+
 lowercase alpha a-z  Usually used to access a predefined routine stored in ROM  eg. p is printnumber, u is microsecond delay
+
 Uppercase alpha A-Z  Frequently used to define User Commands or parameters, created to meet the requirements of the application
+
 Symbols Used for arithmetic, logic, loop control and program flow purposes.
 
 This convention is suggested as it gives each character a strong mnemonic value and makes the code more readable. However any of the 96 printable ascii characters could be used to initiate any function in code.
@@ -32,11 +35,17 @@ Make a LED on pin 13 flash 10 times, 100mS on and 1000mS off - just 20 character
 13d10{1o100m0o1000m}
 
 13d  - select digital pin 13
+
 10{  - set the loop counter to 10 and begin the loop
+
 1o   - output 1 (HIGH) to the selected pin
+
 100m - delay for 100 milliseconds
+
 0o   - output 0 (LOW) to the pin
+
 1000m  delay for 1000 milliseconds
+
 }    - loop back to the beginning until the loop counter = 0
 
 If you want to keep this code snippet, you can allocate it to a User Command, normally an uppercase character A-Z. Here we use F for flash
@@ -82,12 +91,19 @@ Implementation.
 SIMPL can be created from half a dozen basic function routines.
 
 getchar - get the next character from the text input buffer
+
 putchar - send a character to the terminal
+
 number  - parse a string of numerical characters until a non-numeric character (eg space) convert the string to a 16-bit input and put it on the stack
+
 printnumber - output a 16-bit integer to the serial terminal in the form of a decimal numeric string
-lookup  - use the value of the ascii character to index into a lookup table or switch-case structure. 
+
+lookup  - use the value of the ascii character to index into a lookup table or switch-case structure.
+
           Obtain the Code Field Address(CFA) associated with that character.
+          
           Jump to and execute the code at the CFA. Jump to next at the end of the function code
+          
 next      Read the next serial character and process it.          
 
 The underlying philosophy of SIMPL is to make the "mechanics" of the interpreter as simple as possible, and to keep the bytecount as low as possible.
