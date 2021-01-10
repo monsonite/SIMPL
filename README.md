@@ -4,6 +4,28 @@ Introduction.
 
 A serial interpreted minimal programming language toolkit - adapted for various microcontrollers including Arduino, ARM and MSP430.
 
+SIMPL is intended to be a minimal, human readable scripting language based on the printable ascii character set. 
+
+It has it's roots in the first electronic computers of the late 1940s where the instruction set was based on alphabetic uppercase characters read from a teletype paper tape. Each character was chosen to have a strong mnemonic value so that it was easily remembered, and made code listings easier to read and write - with fewer mistakes. 
+
+See the Cambridge EDSAC from 1948 for examples of an alpha character instruction set:  https://www.cl.cam.ac.uk/~mr10/Edsac/edsacposter.pdf
+
+SIMPL was inspired by Ward Cunningham's Txtzyme nano-interpreter  https://github.com/WardCunningham/Txtzyme
+
+It builds upon Ward's philosopy of keeping things simple, but adds significantly more functionality and the means to make a user extensible language.
+
+SIMPL was also influenced by Charles H. Moore's Forth. It uses the same reverse polish notation RPN placing the operands on the stack before executing the operator function.
+
+Additionally, new User functions can be built up by concatenating exisisting functions - this makes SIMPL extensible.
+
+Unlike Forth, there is no dictionary and this avoids the overheads of additional parsing and dictionary searches. SIMPL can be written in about 2kbytes or less, whereas Forth may require 6k bytes. This makes it quicker and easier to port to the assembly language of an unfamiliar microcontroller.
+
+The use of single ascii character commands means that a function can be executed with nothing more than a table look-up to obtain an execution address.
+
+
+Functionality.
+
+
 SIMPL sets up a minimal serial shell which allows you to control a microcontroller from a few ascii characters typed from a serial terminal.
 
 Numbers 0-9  are processed as a 16-bit integer and used as numerical input (literals) or as control parameters
@@ -86,7 +108,9 @@ A SIMPL interpreter shell can be written in about 300 bytes of assembly language
 
 The shell can also be written in C, or using the Arduino C++ language - but the ROM size will be significantly larger. Many of the Arduino reference language functions use a significant amount of ROM.
 
+
 Implementation.
+
 
 SIMPL can be created from half a dozen basic function routines.
 
