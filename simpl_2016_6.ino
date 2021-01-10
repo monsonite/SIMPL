@@ -1,10 +1,12 @@
 // SIMPL
+
 // A Serial Interpreted Minimal Programming Language
+
 // Inspired by Txtzyme - by Ward Cunningham
 
 // Filename simpl_2015_32bit
 
-// This is the slim version of simpl that removes most of the Arduino specific routines
+// This is the slim version of SIMPL  that removes most of the Arduino specific routines - especially the serialRead and serialWrite
 
 // setup() and loop() remain - as there was a problem with the millisecond delay() without loop()
 
@@ -28,7 +30,7 @@
 #define bufRead(addr)      (*(unsigned char *)(addr))
 #define bufWrite(addr, b)   (*(unsigned char *)(addr) = (b))
    
-// This character array is used to hold the User's words
+// This character array is used to hold the User's word definitions
 
 char array[28][64]  = {                            // Define a 26 x 48 array for the colon definitions
                          {"6d40{h1106ul1106u}"},  // Musical tones A - G
@@ -257,7 +259,7 @@ void txtChk (char *buf)       // Check if the text starts with a colon and if so
       case 's':   x = analogRead(x);             break;
       case 'i':   x = digitalRead(d);            break;   
       case 'o':   digitalWrite(d, x%2);          break;     
-      case 'h':   PORTD |= B01000000;            break; // Set bit 6 high     
+      case 'h':   PORTD |= B01000000;            break;  // Set bit 6 high     
       case 'l':   PORTD &= B10111111;            break;  // Set bit 6 low
      
  // Timing and Delays Group   
@@ -270,11 +272,11 @@ void txtChk (char *buf)       // Check if the text starts with a colon and if so
       
  // Printing Group     
     
-      case 'p':      printlong(x);    crlf();    break;       // print integer with crlf
-      case 'q':      printlong(x);               break;       // print integer   
-      case 'b':      printlong(millis());      crlf();      break;
-      case 'c':      printlong(micros());      crlf();      break;          
-      case 't':      printlong(micros());                   break;
+      case 'p':      printlong(x);               crlf();      break;       // print integer with crlf
+      case 'q':      printlong(x);                            break;       // print integer   
+      case 'b':      printlong(millis());        crlf();      break;
+      case 'c':      printlong(micros());        crlf();      break;          
+      case 't':      printlong(micros());                     break;
       
       
 // Looping and program control group
