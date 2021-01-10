@@ -100,9 +100,9 @@ printnumber - output a 16-bit integer to the serial terminal in the form of a de
 
 lookup  - use the value of the ascii character to index into a lookup table or switch-case structure.
 
-          Obtain the Code Field Address(CFA) associated with that character.
-          
-          Jump to and execute the code at the CFA. Jump to next at the end of the function code
+Obtain the Code Field Address(CFA) associated with that character.
+      
+Jump to and execute the code at the CFA. Jump to next at the end of the function code
           
 next      Read the next serial character and process it.          
 
