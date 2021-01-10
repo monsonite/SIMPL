@@ -13,7 +13,7 @@ See the Cambridge EDSAC from 1948 for examples of an alpha character instruction
 
 SIMPL was developed as a human readable pseudo-language to control a 16-bit virtual machine based on a Minimal Instruction Set Computer (MISC).
 
-It performs the Read-Eval_Print Loop (REPL) required by a serial interpreter shell.  
+It performs the Read-Eval-Print Loop (REPL) required by a serial interpreter shell.  
 
 A MISC is a computer architecture typically defined by a very small instruction set - often with only 8 to 32 instructions. 
 
