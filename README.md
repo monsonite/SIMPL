@@ -109,7 +109,11 @@ Every time you type F the mcu will flash the LED 10 times. The code behind F can
 
 FFFF will execute the code 4 times - flashing the LED 40 times.
 
+# Further Thoughts
+
 SIMPL code is very compact. A lot can be performed using short snippets, taking up very small memory resources. It is the equivalent of a programming "Shorthand" - designed to be quick and concise but still remain human readable.
+
+Most User Definitions are going to be fewer than 32 characters long. A source code editor could be implemented easily using a 40 character x 25 row screen of text.
 
 It gives you the ability to define your own instuction set to suit your application - whether you want to exercise hardware to flash a few LEDs or control an X-Y positioning system.
 
