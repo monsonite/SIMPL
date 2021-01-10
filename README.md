@@ -1,6 +1,6 @@
 # SIMPL
 
-Introduction.
+__Introduction.
 
 A serial interpreted minimal programming language toolkit - adapted for various microcontrollers including Arduino, ARM and MSP430.
 
@@ -36,7 +36,7 @@ SIMPL is effectively a human readable language for implementing a 16-bit Von Neu
 It can be applied to any resource limited processor, it is easier to read and write than assembler but not as complex as a full Forth implementation. 
 
 
-Functionality.
+__Functionality.
 
 
 SIMPL sets up a minimal serial shell which allows you to control a microcontroller from a few ascii characters typed from a serial terminal.
@@ -122,7 +122,7 @@ A SIMPL interpreter shell can be written in about 300 bytes of assembly language
 The shell can also be written in C, or using the Arduino C++ language - but the ROM size will be significantly larger. Many of the Arduino reference language functions use a significant amount of ROM.
 
 
-Implementation.
+__Implementation.
 
 
 SIMPL can be created from half a dozen basic function routines. These implement the Read-Eval-Print Loop REPL
@@ -268,7 +268,7 @@ Logic operators & | ^ and ~  (AND OR XOR NOT) are recognised
 
 ;   Toggle a port pin at 1MHz   1000{hlhlhlhlhlhlhlhlhlhl}
 
-
+;--------------------------------__LIST OF CHARACTERS, FUNCTIONS AND OPERATORS__-----------------------------------------------
 
 ;	Lower case letters are used for more complex inbuilt commands executed from ROM. Here are some suggestions - but not extensive
 
