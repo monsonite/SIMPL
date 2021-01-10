@@ -29,6 +29,10 @@ Unlike Forth, there is no dictionary and this avoids the overheads of additional
 
 The use of single ascii character commands means that a function can be executed with nothing more than a table look-up to obtain an execution address.
 
+SIMPL is effectively a human readable language for implementing a 16-bit Von Neumann virtual machine on top of the native assembly language of the cpu.
+
+It can be applied to any resource limited processor, it is easier to read and write than assembler but not as complex as a full Forth implementation. 
+
 
 Functionality.
 
@@ -119,7 +123,7 @@ The shell can also be written in C, or using the Arduino C++ language - but the 
 Implementation.
 
 
-SIMPL can be created from half a dozen basic function routines.
+SIMPL can be created from half a dozen basic function routines. These implement the Read-Eval-Print Loop REPL
 
 getchar - get the next character from the text input buffer
 
@@ -162,7 +166,11 @@ It has also been used to explore and exercise new microcontroller architectures 
 
 ; Loops, I/O, Strings and Delays added
 
-Here are some quick instructions - it uses lower case commands usually preceded by an integer number 32767 max
+
+
+Here are some quick instructions - it uses lower case commands usually preceded by an integer number 65536 max
+
+p      print out the number on the top of the stack followed by a carriage return
 
 1234p   Print the number 1234
 
@@ -180,13 +188,15 @@ _Hello World_   Print the text string contained between the underscores
 
 100u    A delay of 100 microseconds
 
-b       Print the current value of the millisecond counter
+b       Print the current value of the millisecond counter - useful for timing how long functions take
 
-c       Print the current valule of the microsecond counter
+c       Print the current valule of the microsecond counter - useful for timing how long functions take
 
 { }     Create a loop structure
 
 k       The current value of the loop counter - decrements each time around the loop
+
+10{kp}   Print out the value of the loop counter as it decrements
 
 Make a LED on pin 47 flash 10 times
 
@@ -194,17 +204,24 @@ Make a LED on pin 47 flash 10 times
 
 1o and 0o can be replaced with h and l (HIGH and LOW)
 
-47l Initially set LED pin low
+47d10{h100ml1000m}
 
-10{h200ml200m}      Flash the LED
+47dl Initially set LED pin low
 
+10{h200ml200m}      Flash the LED 10 times  200mS on, 1200mS off
 
+Audio Tones, connect a small speaker to the output pin - use u the microsecond delay function
 
 1000{1o250u0o250u}  Create a short audio tone on pin 47
 
 100{14sp}    Take 100 ADC samples on pin 14 (AN0) and print them out
 
 10 11+p      Add 10 and 11 and print the result
+
+Maths operators +  - * and / are recognised
+
+Logic operators & | ^ and ~  (AND OR XOR NOT) are recognised
+
 
 
 ;		Upper case letters are used to define Users "words"
@@ -215,7 +232,7 @@ Make a LED on pin 47 flash 10 times
 
 ;		You can play sequences of notes through a small speaker  ABC etc
 
-;   :A40{h1106ul1106u);		 musical note A
+;   :A40{h1106ul1106u);		       musical note A
 
 ;   :B5{h986ul986u);			 musical note B
 
@@ -233,19 +250,21 @@ Make a LED on pin 47 flash 10 times
 
 ;   Examples of SIMPL phrases
 
-; 	eg add 123 and 456 and print the result to the terminal
+;   eg add 123 and 456 and print the result to the terminal
 
-; 	123 456+p
+;   123 456+p
 
-;	  Loop 10 times printing "Spurs are Fab!"
+;   Loop 10 times printing "Spurs are Fab!" Curley brackets { and } are used to enclose the code to be repeated within the loop
 
-; 	10(_Spurs are Fab!_)
+;   The number outside the opening brace is the loopcounter. The contents of the loop will be executed until the loopcounter is decremented to zero  
+
+;   10{_Spurs are Fab!_}
 
 ;   Flash a LED 10 times 100mS on 200mS off
 
-;   10(h100ml200m)
+;   10{h100ml200m}
 
-;   Toggle a port pin at 1MHz   1000(hlhlhlhlhlhlhlhlhlhl)
+;   Toggle a port pin at 1MHz   1000{hlhlhlhlhlhlhlhlhlhl}
 
 
 
@@ -303,7 +322,7 @@ Make a LED on pin 47 flash 10 times
 
 ; z
 
-; Maths operators +  - * and / are recognised
+
 
 
 
