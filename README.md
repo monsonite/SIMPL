@@ -2,6 +2,22 @@
 
 A serial interpreted minimal programming language toolkit - adapted for various microcontrollers including Arduino, ARM and MSP430.
 
+SIMPL sets up a minimal serial shell which allows you to control a microcontroller from a few ascii characters typed from a serial terminal.
+
+I describe it as a toolkit, because it has the means to customise it to your own application. Every ascii character is treated as a bytecode command. You can define your own instuction set whether you want to exercise hardware to flash a few LEDs or control an X-Y positioning system.
+
+Scripted commands can be typed in directly followed by a CRLF, or you can send a sequence of commands line by line from a text file, using the Send File option on your terminal programme.
+
+SIMPL is a minimalist shell to help bring up new microcontroller hardware. The code can be written in C or in assembly language if you require a more compact solution.
+
+SIMPL has been influenced by Forth, but it has removed the complexity of creating a dictionary and parsing and looking up multi character commands. Every valid ascii character is treated as a jump to an action routine, before returning back to the interpreter.
+
+The later versions of SIMPL are self-hosting - you can define your own language to match the requirements of your application.
+
+SIMPL normally uses between 1024 and 2048 bytes of flash ROM to implement.
+
+Most of the SIMPL development was done using the Arduino IDE and a compatible microcontroller.
+
 The SIMPLinterpreter is about 300 lines of C code that allow you to control the peripherals of a microcontroller from a serial terminal connection.
 
 It enables interaction with the hardware and peripherals using a set of serial commands - for example typing 13h will set digital pin 13 high and typing 13l will set it low. 
