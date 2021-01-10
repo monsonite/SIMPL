@@ -1,10 +1,12 @@
 # SIMPL
 
-__Introduction.
+# Introduction.
 
-A serial interpreted minimal programming language toolkit - adapted for various microcontrollers including Arduino, ARM and MSP430.
+A serial, interpreted, minimal programming language toolkit - adapted for various microcontrollers including Arduino, ARM and MSP430.
 
-SIMPL is intended to be a minimal, human readable scripting language based on the printable ascii character set. 
+SIMPL is intended to be a minimal, human readable scripting language based on the printable ascii character set.
+
+It has been evolving since May 2013 but started with the need to provide an interactive control method for microcontrollers from a serial terminal - driven by the underlying requirements of keeping the onchip resources to an absolute minimum and the interpreter as simple as possible. 
 
 It has it's roots in the first electronic computers of the late 1940s where the instruction set was based on alphabetic uppercase characters read from a teletype paper tape. Each character was chosen to have a strong mnemonic value so that it was easily remembered, and made code listings easier to read and write - with fewer mistakes. 
 
