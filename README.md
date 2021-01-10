@@ -6,7 +6,7 @@ A serial interpreted minimal programming language toolkit - adapted for various 
 
 SIMPL sets up a minimal serial shell which allows you to control a microcontroller from a few ascii characters typed from a serial terminal.
 
-Numbers 0-9  are processed as a 16-bit integer and used as a control parameter
+Numbers 0-9  are processed as a 16-bit integer and used as numerical input (literals) or as control parameters
 
 lowercase alpha a-z  Usually used to access a predefined routine stored in ROM  eg. p is printnumber, u is microsecond delay
 
