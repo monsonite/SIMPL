@@ -10,6 +10,13 @@ It has it's roots in the first electronic computers of the late 1940s where the 
 
 See the Cambridge EDSAC from 1948 for examples of an alpha character instruction set:  https://www.cl.cam.ac.uk/~mr10/Edsac/edsacposter.pdf
 
+
+SIMPL was designed as a human readable pseudo-language to control a virtual machine based on a Minimal Instruction Set Computer (MISC).  
+
+A MISC is a computer architecture typically defined by a very small instruction set - often with only 8 to 32 instructions. 
+
+One example is the PDP-8, a 12-bit machine from 1965 which had 8 primitive instructions plus the means to control operations on it's accumulator by directly decoding the bitfield from the instruction word. Despite the lack of instructions, the PDP-8 was a versatile machine with it's hardware deficiencies being made up for in software macros.
+
 SIMPL was inspired by Ward Cunningham's Txtzyme nano-interpreter  https://github.com/WardCunningham/Txtzyme
 
 It builds upon Ward's philosopy of keeping things simple, but adds significantly more functionality and the means to make a user extensible language.
