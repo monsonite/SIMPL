@@ -270,7 +270,9 @@ Logic operators & | ^ and ~  (AND OR XOR NOT) are recognised
 
 
 
-;	Lower case letters are used for more complex commands
+;	Lower case letters are used for more complex inbuilt commands executed from ROM. Here are some suggestions - but not extensive
+
+
 
 ; a
 
@@ -278,7 +280,7 @@ Logic operators & | ^ and ~  (AND OR XOR NOT) are recognised
 
 ; c      print the microseconds counter
 
-; d      Define an I/O pin
+; d      Define a digital I/O pin
 
 ; e
 
@@ -298,7 +300,7 @@ Logic operators & | ^ and ~  (AND OR XOR NOT) are recognised
 
 ; m       milliseconds delay
 
-; n
+; n       Ouput an 8-bit binary number on 8 consecutive port pins
 
 ; o       output bit to port
 
@@ -310,7 +312,7 @@ Logic operators & | ^ and ~  (AND OR XOR NOT) are recognised
 
 ; s       sample the ADC
 
-; t
+; t       Toggle a port pin - equivalent to {hl}
 
 ; u       microseconds delay
 
@@ -318,11 +320,77 @@ Logic operators & | ^ and ~  (AND OR XOR NOT) are recognised
 
 ; w
 
-; x
+; x       Three registers that form a stack
 
-; y
+; y       Three registers that form a stack
 
-; z
+; z       Three registers that form a stack
+
+;         Sybolic Operators
+
+; +       ADD
+
+; -       SUB
+
+; *       MUL
+
+; /       DIV
+
+; &       AND
+
+; |       OR
+
+; ^       XOR
+
+; ~       NOT INVert
+
+; @       Fetch
+
+; !       Store
+
+; "       Stack operation DUP
+
+; '       Stack operation DROP
+
+; $       Stack operation SWAP
+
+; %       Stack operation OVER
+
+; :       Start colon definition
+
+; ;       End colon definition
+
+; #       16-bit literal
+
+; <       LESS than
+
+; =       EQUAL
+
+; >       GREATER than
+
+; \       Comment   \This is a comment
+
+; ,       Array separator
+
+; .       Print top of stack (same as p)
+
+;         Conditional code
+
+; (       Start an array separated by commas
+
+; )       End of array
+
+; {       Start a Loop
+
+; }       End of Loop
+
+; Start a switch-case [
+
+; End a switch-case   ]
+
+; _Hello World_       Print a text string enclosed inside the underscores
+
+
 
 
 
