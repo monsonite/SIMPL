@@ -10,7 +10,19 @@ It started in 2009 when I required an interactive control method for microcontro
 
 As a hardware engineer and not a strong programmer it was driven by the underlying requirements of keeping the onchip resources to an absolute minimum and the interpreter code as simple as possible.
 
-It began with a serial command interpreter for exercising Arduino hardware but has evolved into an interactive language toolkit for exercising a virtual machine VM.
+It began with a serial command interpreter for exercising Arduino hardware.
+
+A single uppercase alpha character followed by a numerical parameter, allowed me to step between various routines coded into ROM. 
+
+This was inspired the hex-monitor/debug programs of the mid-1970s to 1980s where uppercase characters followed by a 16-bit address or 8-bit data word allowed you to Examine, Modify and Run programs stored in RAM. 
+
+WozMon on the Apple I was representative of this class of programs. 
+
+https://steckschwein.de/2018/07/22/wozmon-a-memory-monitor-in-256-bytes/ 
+
+A very small interpreter, few commands and tight assembley language programming allowed a useful hex editor in fewer than 256 bytes of code - fitting into a 256byte PROM on the Apple I.  
+
+What started as a variant on a hex monitor has evolved into an interactive language toolkit for exercising a virtual machine VM.
 
 Historical documentation can be found in my blog "Sustainable Suburbia" starting in May 2013: 
 
@@ -22,7 +34,63 @@ At all times I apply the KISS principle - Keep it SIMPL, stupid.
 
 # History
 
-SIMPL was inspired by Ward Cunningham's Txtzyme nano-interpreter  https://github.com/WardCunningham/Txtzyme which I first encountered in May of 2013. I combined Ward's elegant and compact nano-interpreter with my uppercase serial command interpreter.  
+The breakthrough I needed for what became SIMPL was inspired by Ward Cunningham's Txtzyme nano-interpreter https://github.com/WardCunningham/Txtzyme which I first encountered in May of 2013. I combined Ward's elegant and compact nano-interpreter with my uppercase serial command interpreter.
+
+Ward had written a compact interpreter in Arduino C++ which allowed the Arduino's peripheral I/O functions to be accessed using only 13 primitive commands all operating with a 16-bit "register" x :
+
+p print the number contained in x as a 16-bit integer
+d define a digital pin
+i test the digital pin for input
+o set the digital pin either logic 1 or 0
+m a millisecond delay
+u a microsecond delay
+{ start a loop
+} end a loop
+k read the loop counter
+s sample the ADC
+_ Print out the text enclosed between the underscored e.g. _Hello World_
+h Print out a list of commands and basic help
+v Print out the version of the mcu
+
+
+An early version of Ward's Txtzyme interpreter can be seen here - only about 100 lines of C code:
+
+https://github.com/WardCunningham/Txtzyme/blob/master/Arduinozyme/Arduinozyme.ino
+
+It immediately became apparent that Ward had created the REPL in 2 simple routines contained within the main loop:
+
+txtRead - If serial character present, put it into next location of a serial input buffer - until CRLF pressed
+txtEval - Take character from input buffer, identify using switch-case structure and perform action. Loop back to txtRead
+
+It was obvious that by extending the switch-case statement within txtEval, that many more commands could be added. So I added maths, logic and comparison operations and a second variable "y". For example:
+
+123 456 + p       // Put 123 in x, 456 in y, ADD them together in x and print out x followed by a CRLF
+
+Maths operators + - * and / and logical operations & | ^ and ~ were added at this time.
+
+I then started thinking about conditional execution.  Ward had already provided an example of how a snippet of code would be conditionally executed depending on whether a port pin was read as 0 or 1. 
+
+This made ingenious use of his loop structure - code enclosed between braces {........}
+
+9{........}   Repeat the enclosed code 9 times
+1{........}   Execute the enclosed code once
+0{........}   Skip the enclosed code
+
+Any operation that results in x being 1 or 0 can be used to determine whether the enclosed code is executed or not.
+
+This allowed a simple mechanism for the comparison operators:
+
+Less than <
+Equal to = 
+Greater than >
+
+# Extensibility
+
+Having come from a Forth background, I was familiar how Forth can be extended with new user functions using the "Colon Definition"
+
+Forth uses a dictionary structure and a dictionary look-up to find the location of the code to execute for a particular function. I decided that this could be massively simplified, by restricting the user to only 26 user functions, allocated to the uppercase characters A-Z.
+
+The second big breakthrough was realising that I could point the interpreter to any address in RAM, and not just the input buffer, and have it execute the ascii-based code located there. This gave a simple mechanism for users to write their own SIMPL code into RAM.      
 
 SIMPL builds upon Ward's philosopy of keeping things simple, but adds significantly more functionality and provides the means to make a user extensible language.
 
