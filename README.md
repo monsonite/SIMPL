@@ -4,11 +4,17 @@
 
 A serial, interpreted, minimal programming language - adapted for various microcontrollers including Arduino, ARM, MSP430 and experimental FPGA/simulated soft core processors.
 
-SIMPL is intended to be a minimal, human readable scripting language based on the printable ascii character set. It can be applied to almost any cpu architecture.
+SIMPL is intended to be a minimal, human readable scripting language based on the printable ascii character set. 
+
+It provides a serial interface with a microcontroller using easy to remember, single character commands, and a basic interface to sent text strings and numerical output to the screen.
+
+It can be applied to almost any cpu architecture.
+
+# History and Inspiration
 
 It started in 2009 when I required an interactive control method for microcontrollers from a serial terminal.
 
-As a hardware engineer and not a strong programmer it was driven by the underlying requirements of keeping the onchip resources to an absolute minimum and the interpreter code as simple as possible.
+As a hardware engineer and only an occasional programmer it was driven by the underlying requirements of keeping the onchip resources to an absolute minimum and the interpreter code as simple as possible.
 
 It began with a serial command interpreter for exercising Arduino hardware.
 
@@ -30,11 +36,17 @@ http://sustburbia.blogspot.com/2013/05/txtzyme-minimal-interpreter-and.html
 
 At all times I apply the KISS principle - Keep it SIMPL, stupid.
 
-
-
-# History
+# txtzyme
 
 The breakthrough I needed for what became SIMPL was inspired by Ward Cunningham's Txtzyme nano-interpreter https://github.com/WardCunningham/Txtzyme which I first encountered in May of 2013. I combined Ward's elegant and compact nano-interpreter with my uppercase serial command interpreter.
+
+A compact version of Ward's txtzyme that will run on an ATmega328 Arduino is located here:
+
+https://github.com/monsonite/SIMPL/blob/master/txtzyme_1.ino
+
+It uses 4418 bytes of flash ROM, much of which is attributed to the Arduino I/O functions. 
+
+Many of these can be rewritten for brevity. The baudrate is 115200.
 
 Ward had written a compact interpreter in Arduino C++ which allowed the Arduino's peripheral I/O functions to be accessed using only 13 primitive commands all operating with a 16-bit "register" x :
 
@@ -112,7 +124,11 @@ Having come from a Forth background, I was familiar how Forth can be extended wi
 
 Forth uses a dictionary structure and a dictionary look-up to find the location of the code to execute for a particular function. I decided that this could be massively simplified, by restricting the user to only 26 user functions, allocated to the uppercase characters A-Z.
 
-The second big breakthrough was realising that I could point the interpreter to any address in RAM, and not just the input buffer, and have it execute the ascii-based code located there. This gave a simple mechanism for users to write their own SIMPL code into RAM.      
+The second big breakthrough was realising that I could point the interpreter to any address in RAM, and not just the input buffer, and have it execute the ascii-based code located there. This gave a simple mechanism for users to write their own SIMPL code into RAM.
+
+You can effectively point the txtEval function to any buffer in memory and it will execute the virtual commands found there until it finds a CRLF.
+
+# Other Influences      
 
 SIMPL builds upon Ward's philosopy of keeping things simple, but adds significantly more functionality and provides the means to make a user extensible language.
 
