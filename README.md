@@ -39,17 +39,29 @@ The breakthrough I needed for what became SIMPL was inspired by Ward Cunningham'
 Ward had written a compact interpreter in Arduino C++ which allowed the Arduino's peripheral I/O functions to be accessed using only 13 primitive commands all operating with a 16-bit "register" x :
 
 p print the number contained in x as a 16-bit integer
+
 d define a digital pin
+
 i test the digital pin for input
+
 o set the digital pin either logic 1 or 0
+
 m a millisecond delay
+
 u a microsecond delay
+
 { start a loop
+
 } end a loop
+
 k read the loop counter
+
 s sample the ADC
+
 _ Print out the text enclosed between the underscored e.g. _Hello World_
+
 h Print out a list of commands and basic help
+
 v Print out the version of the mcu
 
 
@@ -60,6 +72,7 @@ https://github.com/WardCunningham/Txtzyme/blob/master/Arduinozyme/Arduinozyme.in
 It immediately became apparent that Ward had created the REPL in 2 simple routines contained within the main loop:
 
 txtRead - If serial character present, put it into next location of a serial input buffer - until CRLF pressed
+
 txtEval - Take character from input buffer, identify using switch-case structure and perform action. Loop back to txtRead
 
 It was obvious that by extending the switch-case statement within txtEval, that many more commands could be added. So I added maths, logic and comparison operations and a second variable "y". For example:
@@ -73,16 +86,25 @@ I then started thinking about conditional execution.  Ward had already provided 
 This made ingenious use of his loop structure - code enclosed between braces {........}
 
 9{........}   Repeat the enclosed code 9 times
+
 1{........}   Execute the enclosed code once
+
 0{........}   Skip the enclosed code
+
+An unexpended bonus of this was that comments could be added using a comment in braces preceded by a zero:
+
+0{ This is a comment that will be ignored by interpreter }
 
 Any operation that results in x being 1 or 0 can be used to determine whether the enclosed code is executed or not.
 
 This allowed a simple mechanism for the comparison operators:
 
 Less than <
-Equal to = 
+
+Equal to =
+
 Greater than >
+
 
 # Extensibility
 
