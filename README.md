@@ -6,7 +6,7 @@ A serial, interpreted, minimal programming language - adapted for various microc
 
 SIMPL is intended to be a minimal, human readable scripting language based on the printable ascii character set. 
 
-It provides a serial interface with a microcontroller using easy to remember, single character commands, and a basic interface to sent text strings and numerical output to the screen.
+It provides a serial interface to a microcontroller using easy to remember, single character commands, and a simple interface to sent text strings and numerical output to the screen.
 
 It can be applied to almost any cpu architecture.
 
